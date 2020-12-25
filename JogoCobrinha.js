@@ -2,6 +2,7 @@ let canvas = document.getElementById("snake");
 let context = canvas.getContext("2d");
 let box = 32;
 let snake = [];
+let pontuacao = 0;
 snake[0] = {
     x: 8 * box,
     y: 8 * box
@@ -42,7 +43,8 @@ function iniciarJogo(){
     for(var i = 1; i < snake.length; i++){
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
             clearInterval(jogo);
-            alert('Game Over :(')
+            document.getElementById('TitleScore').innerHTML = " Pontuação Final ";
+            document.getElementById('GameOver').innerHTML = " Game Over! ";
         }
     }
 
@@ -63,6 +65,8 @@ function iniciarJogo(){
     }else{
         food.x = Math.floor(Math.random() * 15 + 1) * box;
         food.y = Math.floor(Math.random() * 15 + 1) * box;
+        pontuacao = pontuacao + 1;
+        document.getElementById('Score').innerHTML = pontuacao + "";
     }
     let newHead = {
         x: snakeX, 
